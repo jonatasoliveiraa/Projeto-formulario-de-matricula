@@ -1,0 +1,288 @@
+#app {
+  grid-template-columns: repeat(2, 1fr);
+
+  height: 100vh;
+}
+
+main {
+  padding: 4rem;
+  overflow: auto;
+}
+
+.mainContainer {
+  max-width: 33rem;
+  margin-left: auto;
+  gap: 48px;
+
+  header {
+    gap: 24px;
+    a {
+      align-items: center;
+    }
+    div {
+      h2 {
+        color: var(--text-primary);
+      }
+    }
+  }
+}
+
+form {
+  gap: 48px;
+}
+
+aside {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  padding: 4rem;
+  background-color: var(--surface-secondary);
+}
+
+.asideContainer {
+  max-width: 31rem;
+  display: grid;
+  gap: 8px;
+  h1 {
+    font: var(--h1);
+    color: var(--text-primary);
+    span {
+      color: var(--text-highlight);
+    }
+  }
+}
+
+fieldset {
+  border: none;
+  legend {
+    margin-bottom: 24px;
+  }
+}
+input,
+select,
+textarea {
+  padding: 12px 16px;
+  border-radius: 8px;
+  border: 1px solid var(--stroke-default);
+  font: var(--text);
+
+  &[disabled] {
+    background-color: var(--surface-disabled);
+    color: var(--text-primary);
+  }
+
+  &:invalid {
+    border-color: var(--semantic-error);
+  }
+  &[required] + .error {
+    outline: none;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    color: var(--semantic-error);
+  }
+  &:not(:focus):valid + .error {
+    display: none;
+  }
+}
+
+select {
+  appearance: none;
+
+  background-image: url(../assets/icons/arrow-down-01.svg);
+  background-repeat: no-repeat;
+  background-position: calc(100% - 1rem);
+}
+input:focus,
+select:focus,
+textarea:focus {
+  outline: 4px solid var(--surface-secondary);
+  border: 1px solid var(--stroke-highlight);
+
+  &:invalid {
+    outline: none;
+  }
+  &[required] {
+    outline: none;
+  }
+}
+
+input[type="date"] {
+  &::-webkit-calendar-picker-indicator {
+    background-image: url(../assets/icons/calendar-03.svg);
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+}
+
+.file {
+  display: grid;
+  border: 2px dashed var(--stroke-default);
+  border-radius: 8px;
+  justify-items: center;
+  align-items: center;
+  color: #a8a29e;
+  gap: 8px;
+  text-align: center;
+  padding-block: 28px;
+  position: relative;
+  input {
+    cursor: pointer;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+  }
+
+  p {
+    width: 30%;
+  }
+
+  &:hover,
+  &:has(input:focus) {
+    border: 2px dashed var(--stroke-highlight);
+    background-color: var(--surface-secondary);
+    svg path {
+      stroke: var(--stroke-highlight);
+    }
+    P {
+      color: var(--text-tertiary);
+    }
+  }
+}
+
+label {
+  font: var(--label);
+  gap: 4px;
+}
+
+.formAddress {
+  div {
+    gap: 20px;
+
+    label {
+      input {
+        width: 100%;
+      }
+    }
+    & div:has([disabled]) {
+      opacity: 0.5;
+    }
+  }
+}
+
+.radioWrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(7.5rem, 1fr));
+}
+.radio {
+  padding: 2rem 0.5rem 0.5rem;
+  border-radius: 8px;
+  border: 2px solid transparent;
+  outline: 1px solid var(--stroke-default);
+  justify-items: center;
+  gap: 8px;
+  position: relative;
+
+  & input,
+  & input:focus,
+  & input:hover {
+    all: unset;
+    position: absolute;
+    inset: 0;
+    cursor: pointer;
+  }
+  .radioImage {
+    background-image: url(../assets/icons/circle.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    left: 0;
+    width: 1.5rem;
+    height: 1.5rem;
+    margin: 8px;
+  }
+  &:hover,
+  &:focus-within {
+    border-color: var(--stroke-highlight);
+    outline: none;
+
+    & .radioImage {
+      background-image: url(../assets/icons/circle-highlight.svg);
+    }
+  }
+
+  &:has(:checked) {
+    border: 2px solid var(--stroke-highlight);
+    & .radioImage {
+      background-image: url(../assets/icons/checkmark-circle-01.svg);
+    }
+  }
+}
+
+.terms {
+  position: relative;
+
+  & input,
+  & input:focus,
+  & input:hover {
+    all: unset;
+    position: absolute;
+    inset: 0;
+  }
+
+  .chekImage {
+    background-image: url(../assets/icons/square.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  &:hover,
+  &:focus-within {
+    & .chekImage {
+      background-image: url(../assets/icons/square-highlight.svg);
+    }
+  }
+
+  &:has(:checked) {
+    & .chekImage {
+      background-image: url(../assets/icons/checkmark-square-01.svg);
+    }
+  }
+  strong {
+    color: var(--text-highlight);
+  }
+}
+.submit {
+  justify-content: end;
+
+  .btnPrimary {
+    &:hover,
+    &:focus {
+      outline: 4px solid var(--surface-secondary);
+    }
+  }
+
+  .btnSecondary {
+    background-color: var(--brand-dark);
+    color: var(--surface-primary);
+
+    &:hover,
+    &:focus {
+      background-color: var(--brand-mid);
+      border: 1px solid var(--brand-mid);
+    }
+  }
+}
+button {
+  all: unset;
+  padding: 12px 24px;
+  border-radius: 8px;
+  border: 1px solid var(--brand-dark);
+  font: var(--button);
+  background-color: var(--surface-primary);
+  color: var(--text-highlight);
+  cursor: pointer;
+}
